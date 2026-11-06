@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>İletişim · Cankat Mali Müşavirlik</title>
+<meta name="description" content="Bize ulaşın.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Manrope:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="k.css">
+</head>
+<body>
+<div class="demo-bar">Örnek şablon · Kurumsal paketi · <a href="../index.html">Tüm paketler</a></div>
+<div class="ku-sek" id="ku-sek"></div>
+<header class="site-head">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <svg class="mark" viewBox="14 16 72 68" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="8"><path d="M20 22H80"/><path d="M50 22V78"/><path d="M20 78H80"/><path d="M30 34V44a20 16 0 0 0 40 0V34"/></g></svg>
+      <span><b data-ku="kisa">Cankat</b><small data-ku="alt">Mali Müşavirlik</small></span>
+    </a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menü</button>
+    <nav class="nav" id="nav">
+      <a href="index.html">Ana sayfa</a><a href="hizmetler.html">Hizmetler</a><a href="hakkimizda.html">Hakkımızda</a><a href="iletisim.html" aria-current="page">İletişim</a>
+      <a class="btn btn-primary" href="iletisim.html" data-ku="cta">Görüşme isteyin</a>
+    </nav>
+  </div>
+</header>
+<main>
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow">İletişim</span>
+    <h1 id="il-b"></h1>
+    <p class="lead">Formu doldurun, en geç bir iş günü içinde dönelim. Acil işler için arayabilirsiniz.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container contact">
+    <div>
+      <div class="actions" style="margin-top:0"><a class="btn btn-primary" href="#" data-demo="call">0 (232) 000 00 00</a><a class="btn btn-wa" href="#" data-demo="wa">WhatsApp</a></div>
+      <dl>
+        <div><dt>Adres</dt><dd>Kazımdirik Mah., Örnek Sk. No:1, Bornova / İzmir</dd></div>
+        <div><dt>E-posta</dt><dd id="il-mail"></dd></div>
+        <div><dt>Saatler</dt><dd id="il-saat"></dd></div>
+      </dl>
+      <iframe class="map" style="margin-top:24px;height:280px" title="Konum haritası" loading="lazy" data-src="https://maps.google.com/maps?q=Kaz%C4%B1mdirik%2C%20Bornova%2C%20%C4%B0zmir&z=15&output=embed"></iframe>
+    </div>
+    <form id="f" novalidate>
+      <label for="ad">Adınız soyadınız<input id="ad" name="ad" required autocomplete="name"></label>
+      <label for="tel">Telefon<input id="tel" name="tel" type="tel" required autocomplete="tel" placeholder="05xx xxx xx xx"></label>
+      <label for="konu">Konu<select id="konu" name="konu"></select></label>
+      <label for="mesaj">Mesajınız<textarea id="mesaj" name="mesaj"></textarea></label>
+      <p class="consent" style="display:block;font-size:14px;color:var(--muted)">Bilgileriniz yalnızca bu talebe dönmek için kullanılır. Ayrıntılar <a href="#">KVKK aydınlatma metninde</a>.</p>
+      <button class="btn btn-primary" type="submit">Gönder</button>
+      <div class="form-ok" id="ok" role="status">Mesajınız alındı. Örnek şablonda form bir yere gönderilmez; gerçek sitede işletmenin e-postasına düşer.</div>
+    </form>
+  </div>
+</section>
+</main>
+<footer class="site-foot">
+  <div class="container">
+    <div><b data-ku="ad">Cankat Mali Müşavirlik</b>Kazımdirik Mah., Örnek Sk. No:1<br>Bornova / İzmir</div>
+    <div><b>İletişim</b><a href="#" data-demo="call">0 (232) 000 00 00</a><br><a href="#" data-demo="wa">WhatsApp</a><br><span id="ft-mail"></span></div>
+    <div><b>Sayfalar</b><a href="hizmetler.html">Hizmetler</a><br><a href="hakkimizda.html">Hakkımızda</a><br><a href="iletisim.html">İletişim</a></div>
+    <div><b>Çalışma saatleri</b><span id="ft-saat"></span></div>
+  </div>
+  <div class="container legal"><span>© <span data-year></span> <span data-ku="ad"></span> · <span id="kunye"></span>Bornova V.D. 0000000000</span><span><a href="#">KVKK aydınlatma metni</a> · <a href="#">Çerez politikası</a></span></div>
+</footer>
+<div class="quick"><a class="btn btn-primary" href="#" data-demo="call">Ara</a><a class="btn btn-wa" href="#" data-demo="wa">WhatsApp</a></div>
+<script src="sektorler.js"></script>
+<script>kuUygula();</script>
+<script src="../assets/site.js"></script>
+<script>
+document.getElementById('f').addEventListener('submit', function (e) {
+  e.preventDefault(); var f = e.target;
+  if (!f.ad.value.trim() || !f.tel.value.trim()) { toast('Ad ve telefon alanlarını doldurun.'); return; }
+  document.getElementById('ok').style.display = 'block'; f.querySelector('button').disabled = true;
+});
+</script>
+</body>
+</html>

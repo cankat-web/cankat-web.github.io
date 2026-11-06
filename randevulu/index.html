@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Cankat Diş Kliniği · Bornova</title>
+<meta name="description" content="Bornova'da ağız ve diş sağlığı. Tedaviler, hekimlerimiz ve online randevu.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="r.css">
+</head>
+<body>
+<div class="demo-bar">Örnek şablon · Randevulu paketi · <a href="panel.html">Randevu panelini gör</a> · <a href="../index.html">Tüm paketler</a></div>
+<div class="rv-sek" id="rv-sek"></div>
+<header class="site-head">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <svg class="mark" viewBox="14 16 72 68" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="8"><path d="M20 22H80"/><path d="M50 22V78"/><path d="M20 78H80"/><path d="M30 34V44a20 16 0 0 0 40 0V34"/></g></svg>
+      <span><b data-rv="ad">Cankat Diş Kliniği</b><small>Bornova</small></span>
+    </a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menü</button>
+    <nav class="nav" id="nav">
+      <a href="#tedaviler" data-rv="hizmetCogul">Tedaviler</a><a href="#hekimler" data-rv="ekipBaslik">Hekimler</a><a href="#sss">Sık sorulanlar</a><a href="#iletisim">İletişim</a>
+      <a class="btn btn-primary" href="randevu.html">Randevu al</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="container">
+      <div>
+        <span class="eyebrow" data-rv="ust"></span>
+        <h1 data-rv="baslik"></h1>
+        <p class="lead" data-rv="giris"></p>
+        <div class="actions"><a class="btn btn-primary" href="randevu.html">Online randevu al</a><a class="btn btn-ghost" href="#" data-demo="call">Arayın</a></div>
+        <div class="trust" id="trust"></div>
+      </div>
+      <div class="ph"><img id="rv-foto" src="../assets/img/d-hasta.jpg" alt=""></div>
+    </div>
+  </section>
+
+  <section class="section" id="tedaviler" style="padding-top:0">
+    <div class="container">
+      <span class="eyebrow" data-rv="hizmetCogul"></span>
+      <h2 style="font-size:clamp(30px,4.5vw,46px);margin-top:12px" data-rv="hizmetSoru"></h2>
+      <div class="treat" id="treat"></div>
+    </div>
+  </section>
+
+  <section class="section" id="hekimler" style="background:var(--soft)">
+    <div class="container">
+      <span class="eyebrow" data-rv="ekipBaslik"></span>
+      <h2 style="font-size:clamp(30px,4.5vw,46px);margin-top:12px" data-rv="ekipSoru"></h2>
+      <div class="docs" id="docs"></div>
+    </div>
+  </section>
+
+  <section class="section" id="sss">
+    <div class="container">
+      <span class="eyebrow">Sık sorulanlar</span>
+      <h2 style="font-size:clamp(30px,4.5vw,46px);margin-top:12px">Randevu öncesi merak edilenler</h2>
+      <div class="faq" id="faq"></div>
+    </div>
+  </section>
+
+  <section class="section" id="iletisim" style="padding-top:0">
+    <div class="container">
+      <div class="band"><h2>Size uygun saati şimdi seçin.</h2><a class="btn btn-primary" href="randevu.html">Randevu al</a></div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:32px;margin-top:48px;align-items:start">
+        <div>
+          <h2 style="font-size:clamp(26px,4vw,36px)">Bize ulaşın</h2>
+          <p class="lead" style="margin-top:12px">Kazımdirik Mah., Örnek Sk. No:1<br>Bornova / İzmir</p>
+          <div class="actions"><a class="btn btn-primary" href="#" data-demo="call">0 (232) 000 00 00</a><a class="btn btn-wa" href="#" data-demo="wa">WhatsApp</a></div>
+        </div>
+        <iframe class="map" title="Konum haritası" loading="lazy" data-src="https://maps.google.com/maps?q=Kaz%C4%B1mdirik%2C%20Bornova%2C%20%C4%B0zmir&z=15&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site-foot">
+  <div class="container">
+    <div><b data-rv="ad">Cankat Diş Kliniği</b>Kazımdirik Mah., Bornova / İzmir</div>
+    <div><b>İletişim</b><a href="#" data-demo="call">0 (232) 000 00 00</a><br><a href="#" data-demo="wa">WhatsApp</a></div>
+    <div><b>Saatler</b><span id="ft-saat"></span></div>
+  </div>
+  <div class="container legal"><span>© <span data-year></span> <span data-rv="ad"></span> · <span id="kunye"></span>Bornova V.D. 0000000000</span><span><a href="#">KVKK aydınlatma metni</a> · <a href="#">Çerez politikası</a></span></div>
+</footer>
+<div class="quick"><a class="btn btn-primary" href="randevu.html">Randevu al</a><a class="btn btn-ghost" href="#" data-demo="call">Ara</a></div>
+
+<script src="../assets/site.js"></script>
+<script src="data.js"></script>
+<script>
+(function(){
+  var esc = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+  rvUygula();
+  var G = RV.gunler, $ = function(id){ return document.getElementById(id); };
+  $('trust').innerHTML = '<span><b>Hafta içi</b> ' + G[0] + '</span><span><b>Cumartesi</b> ' + G[1] + '</span><span><b>Pazar</b> ' + G[2] + '</span>';
+  $('ft-saat').innerHTML = 'Hafta içi ' + G[0] + '<br>Cumartesi ' + G[1] + (G[2] === 'Kapalı' ? '' : '<br>Pazar ' + G[2]);
+  $('kunye').textContent = RV.kunye ? RV.kunye + ' · ' : '';
+  $('rv-foto').src = '../assets/img/' + RV.foto[0] + '.jpg'; $('rv-foto').alt = RV.foto[1];
+  $('faq').innerHTML = RV.sss.map(function(q){ return '<details><summary>' + esc(q[0]) + '</summary><p>' + esc(q[1]) + '</p></details>'; }).join('');
+  [].forEach.call(document.querySelectorAll('a[href="randevu.html"], a[href="panel.html"]'), function(a){ a.href += '?s=' + RV_KEY; });
+  document.getElementById('treat').innerHTML = HIZMETLER.map(function(h){
+    return '<a href="randevu.html?s=' + RV_KEY + '&h=' + h.id + '"><h3>' + esc(h.ad) + '</h3><p>' + esc(h.not) + '</p><span class="dur">' + h.sure + ' dk · Randevu al →</span></a>';
+  }).join('');
+  document.getElementById('docs').innerHTML = HEKIMLER.map(function(d, i){
+    var ini = d.ad.replace(/^(Dt|Dyt|Vet)\.( Hek\.)? /, '').split(' ').map(function(w){ return w.charAt(0); }).join('').slice(0, 2);
+    return '<div class="doc"><div class="ini">' + ini + '</div><div><h3>' + esc(d.ad) + '</h3><span>' + esc(d.alan) + '</span></div></div>';
+  }).join('');
+})();
+</script>
+</body>
+</html>

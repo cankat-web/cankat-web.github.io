@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Katalog örneği · Bornova</title>
+<meta name="description" content="Katalog paketi örneği: menü, ürün ya da ilan listesi; fiyatları işletme kendi panelinden günceller.">
+<meta name="robots" content="noindex">
+<link rel="icon" href="../assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Figtree:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="c.css">
+</head>
+<body>
+<div class="demo-bar">Örnek şablon · Katalog paketi · <a href="panel.html">Yönetim panelini gör</a> · <a href="../index.html">Tüm paketler</a></div>
+<div class="kt-sek" id="kt-sek"></div>
+<header class="site-head">
+  <div class="container">
+    <a class="brand" href="#">
+      <svg class="mark" viewBox="14 16 72 68" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="8"><path d="M20 22H80"/><path d="M50 22V78"/><path d="M20 78H80"/><path d="M30 34V44a20 16 0 0 0 40 0V34"/></g></svg>
+      <span><b id="b-ad"></b><small id="b-alt"></small></span>
+    </a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="nav">Menü</button>
+    <nav class="nav" id="nav">
+      <a href="#menu" aria-current="page" id="n1"></a><a href="#mekan" id="n2"></a><a href="#ziyaret" id="n3"></a>
+      <a class="btn btn-wa" href="#" data-demo="wa">WhatsApp</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="r-hero">
+    <img id="h-img" src="" alt="" fetchpriority="high">
+    <div class="container">
+      <span class="eyebrow" id="h-ust"></span>
+      <h1 id="h-baslik"></h1>
+      <p class="lead" id="h-giris"></p>
+      <div class="facts"><span><i class="dot" id="opendot"></i><span id="openlbl"></span></span><span id="f1"></span><span id="f2"></span></div>
+      <div class="hero-cta"><a class="btn btn-primary" href="#menu" id="cta1"></a><a class="btn btn-ghost" href="#" data-demo="wa" id="cta2"></a></div>
+    </div>
+  </section>
+
+  <section class="picks container" aria-labelledby="ph">
+    <div class="sec-head"><h2 id="ph"></h2><p id="ph-t"></p></div>
+    <div class="rail" id="rail"></div>
+  </section>
+
+  <div class="menu-bar" id="menu">
+    <div class="container">
+      <nav class="cats" id="cats" aria-label="Bölümler"></nav>
+      <div class="filters" id="filters"><input class="search" id="q" type="search"></div>
+    </div>
+  </div>
+  <div class="container menu" id="list"></div>
+  <p class="container mnote" id="dipnot"></p>
+
+  <section class="section" id="mekan">
+    <div class="container">
+      <div class="sec-head"><h2 id="m-b"></h2><p id="m-t"></p></div>
+      <div class="place" id="place"></div>
+    </div>
+  </section>
+
+  <section class="section" id="ziyaret" style="background:var(--soft)">
+    <div class="container visit">
+      <div>
+        <span class="eyebrow" id="z-ust"></span>
+        <h2 style="font-size:clamp(30px,4.5vw,46px);margin:12px 0 14px" id="z-b"></h2>
+        <p class="lead" id="z-t"></p>
+        <dl class="hours" id="z-saat"></dl>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:24px"><a class="btn btn-wa" href="#" data-demo="wa">WhatsApp'tan yazın</a><a class="btn btn-ghost" href="#" data-demo="call">Arayın</a></div>
+      </div>
+      <iframe class="map" title="Konum haritası" loading="lazy" data-src="https://maps.google.com/maps?q=Kaz%C4%B1mdirik%2C%20Bornova%2C%20%C4%B0zmir&z=15&output=embed"></iframe>
+    </div>
+  </section>
+</main>
+
+<dialog class="prod" id="dlg" aria-labelledby="d-ad">
+  <button class="close" id="dlg-close" aria-label="Kapat">×</button>
+  <div class="prod-in" id="d-in">
+    <div class="pimg"><img id="d-img" alt=""></div>
+    <div class="prod-body">
+      <span class="eyebrow" id="d-kat"></span>
+      <h2 id="d-ad"></h2>
+      <div class="big" id="d-fiyat"></div>
+      <p id="d-acik" style="color:var(--muted)"></p>
+      <div class="tags" id="d-tags"></div>
+      <dl class="specs"><dt id="d-l1"></dt><dd id="d-o1"></dd><dt id="d-l2"></dt><dd id="d-o2"></dd></dl>
+      <div class="actions"><a class="btn btn-wa" href="#" id="d-wa"></a><a class="btn btn-ghost" href="#" data-demo="wa" id="d-c2"></a></div>
+    </div>
+  </div>
+</dialog>
+
+<footer class="site-foot">
+  <div class="container">
+    <div><b id="ft-ad"></b>Kazımdirik Mah., Bornova / İzmir</div>
+    <div><b>İletişim</b><a href="#" data-demo="call">0 (232) 000 00 00</a><br><a href="#" data-demo="wa">WhatsApp</a></div>
+    <div><b>Sosyal</b><a href="#">Instagram</a></div>
+  </div>
+  <div class="container legal"><span>© <span data-year></span> <span id="lg-ad"></span> · Bornova V.D. 0000000000</span><span><a href="#">KVKK aydınlatma metni</a> · <a href="#">Çerez politikası</a></span></div>
+</footer>
+<div class="quick"><a class="btn btn-primary" href="#menu" id="qk1"></a><a class="btn btn-wa" href="#" data-demo="wa" id="qk2"></a></div>
+
+<script src="data.js"></script>
+<script src="../assets/site.js"></script>
+<script>
+(function(){
+  var K = KT, list = menuYukle(), F = {};
+  var $ = function(id){ return document.getElementById(id); };
+  var esc = function(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+  var slug = function(s){ return 'k-' + s.toLocaleLowerCase('tr').replace(/[^a-zçğıöşü0-9]+/g, '-'); };
+  var tags = function(p){ return (p.etiket || []).map(function(t){ return K.etiketler[t] ? '<span class="tg ' + t + '">' + esc(K.etiketler[t]) + '</span>' : ''; }).join(''); };
+  var fiyat = function(p){ return tl(p.fiyat, p.birim); };
+
+  // Sektöre göre sabit metinler
+  ktSecici($('kt-sek'));
+  document.title = K.ad + ' · Bornova';
+  $('b-ad').textContent = K.ad; $('b-alt').textContent = K.alt; $('ft-ad').textContent = K.ad; $('lg-ad').textContent = K.ad;
+  $('n1').textContent = K.nav[0]; $('n2').textContent = K.nav[1]; $('n3').textContent = K.nav[2];
+  $('h-img').src = foto(K.kapak[0]); $('h-img').alt = K.kapak[1];
+  $('h-ust').textContent = K.ust; $('h-baslik').innerHTML = K.baslik; $('h-giris').textContent = K.giris;
+  $('f1').textContent = K.bilgiler[0]; $('f2').textContent = K.bilgiler[1];
+  $('cta1').textContent = K.cta[0]; $('cta2').textContent = K.cta[1];
+  $('ph').textContent = K.secim[0]; $('ph-t').textContent = K.secim[1];
+  $('q').placeholder = K.ara; $('q').setAttribute('aria-label', K.ara);
+  $('dipnot').textContent = K.dipnot;
+  $('m-b').textContent = K.mekan[0]; $('m-t').textContent = K.mekan[1];
+  $('place').innerHTML = K.mekan[2].map(function(m){ return '<figure><img src="' + foto(m[0]) + '" alt="' + esc(m[1]) + '" loading="lazy"><figcaption>' + esc(m[1]) + '</figcaption></figure>'; }).join('');
+  $('z-ust').textContent = K.ziyaret[0]; $('z-b').textContent = K.ziyaret[1]; $('z-t').textContent = K.ziyaret[2];
+  $('z-saat').innerHTML = K.ziyaret[3].map(function(h){ return '<dt>' + esc(h[0]) + '</dt><dd>' + esc(h[1]) + '</dd>'; }).join('') + '<dt>Adres</dt><dd>Kazımdirik Mah., Örnek Sk. No:1, Bornova</dd>';
+  $('d-l1').textContent = K.o1; $('d-l2').textContent = K.o2;
+  $('d-c2').textContent = K.detayCta[1];
+  $('qk1').textContent = K.hizli[0]; $('qk2').textContent = K.hizli[1];
+  [].forEach.call(document.querySelectorAll('a[href="panel.html"]'), function(a){ a.href = 'panel.html?s=' + KT_KEY; });
+
+  // Açık / kapalı
+  var tm = function(t){ var a = t.split(':'); return +a[0] * 60 + +a[1]; }, now = new Date(), nm = now.getHours() * 60 + now.getMinutes();
+  var ac = tm(K.acik[0]), kp = tm(K.acik[1]) || 1440, acikMi = nm >= ac && nm < kp;
+  $('openlbl').textContent = acikMi ? 'Şu an açık · ' + K.acik[0] + '–' + K.acik[1] : 'Şu an kapalı · ' + K.acik[0] + '\'de açılıyor';
+  if (!acikMi) $('opendot').classList.add('off');
+
+  // Filtreler
+  $('filters').insertAdjacentHTML('afterbegin', K.filtreler.map(function(f){ F[f[0]] = false; return '<button class="tog" data-f="' + f[0] + '" aria-pressed="false">' + esc(f[1]) + '</button>'; }).join(''));
+  var kats = K.bolumler.filter(function(k){ return list.some(function(p){ return p.kategori === k; }); })
+    .concat(list.map(function(p){ return p.kategori; }).filter(function(v,i,a){ return v && a.indexOf(v) === i && K.bolumler.indexOf(v) < 0; }));
+
+  $('rail').innerHTML = list.filter(function(p){ return p.foto && (p.etiket || []).indexOf('sef') > -1 && p.durum !== 'yok'; }).map(function(p){
+    return '<button class="pick" data-id="' + esc(p.id) + '"><img src="' + foto(p.foto) + '" alt="" loading="lazy"><div><h3>' + esc(p.ad) + '</h3><b>' + fiyat(p) + '</b></div></button>';
+  }).join('');
+  $('cats').innerHTML = kats.map(function(k, i){ return '<a href="#' + slug(k) + '"' + (i ? '' : ' class="on"') + '>' + esc(k) + '</a>'; }).join('');
+
+  function uyar(p){
+    var e = p.etiket || [];
+    return K.filtreler.every(function(f){ if (!F[f[0]]) return true; var has = e.indexOf(f[0]) > -1; return f[2] === 'var' ? has : !has; });
+  }
+  function render(){
+    var q = $('q').value.trim().toLocaleLowerCase('tr'), total = 0;
+    var html = kats.map(function(k){
+      var rows = list.filter(function(p){ return p.kategori === k && uyar(p) && (!q || (p.ad + ' ' + p.aciklama + ' ' + (p.o1 || '') + ' ' + (p.o2 || '')).toLocaleLowerCase('tr').indexOf(q) > -1); });
+      total += rows.length;
+      if (!rows.length) return '';
+      var note = rows.filter(function(p){ return p.not; })[0];
+      return '<section class="cat" id="' + slug(k) + '"><h2>' + esc(k) + ' <small>' + rows.length + '</small></h2>' + (note ? '<p class="cnote">' + esc(note.not) + '</p>' : '') + '<div class="items">' + rows.map(function(p){
+        var yok = p.durum === 'yok';
+        return '<button class="item' + (p.foto ? '' : ' nofoto') + (yok ? ' yok' : '') + '" data-id="' + esc(p.id) + '">' +
+          (p.foto ? '<span class="th"><img src="' + foto(p.foto) + '" alt="" loading="lazy"></span>' : '') +
+          '<span><h3>' + esc(p.ad) + '</h3><p>' + esc(KT_KEY === 'restoran' ? p.aciklama : (p.o1 + ' · ' + p.o2)) + '</p>' + ((p.etiket || []).length ? '<span class="tags">' + tags(p) + '</span>' : '') + '</span>' +
+          '<span class="pr">' + (yok ? esc(K.yok) : fiyat(p)) + '</span></button>';
+      }).join('') + '</div></section>';
+    }).join('');
+    $('list').innerHTML = total ? html : '<p class="empty">Bu aramaya uyan ' + esc(K.sayac) + ' yok.</p>';
+    spy();
+  }
+
+  var io;
+  function spy(){
+    if (io) io.disconnect();
+    if (!('IntersectionObserver' in window)) return;
+    io = new IntersectionObserver(function(en){
+      en.forEach(function(e){
+        if (!e.isIntersecting) return;
+        [].forEach.call($('cats').children, function(a){
+          var on = a.getAttribute('href') === '#' + e.target.id; a.classList.toggle('on', on);
+          if (on) $('cats').scrollTo({ left: a.offsetLeft - 16, behavior: 'smooth' });
+        });
+      });
+    }, { rootMargin: '-180px 0px -60% 0px' });
+    document.querySelectorAll('.cat').forEach(function(s){ io.observe(s); });
+  }
+
+  document.querySelectorAll('.tog').forEach(function(b){ b.addEventListener('click', function(){ F[b.dataset.f] = !F[b.dataset.f]; b.setAttribute('aria-pressed', F[b.dataset.f]); render(); }); });
+  $('q').addEventListener('input', render);
+
+  function open(id){
+    var p = list.filter(function(x){ return x.id === id; })[0]; if (!p) return;
+    $('d-in').classList.toggle('nofoto', !p.foto);
+    if (p.foto) { $('d-img').src = foto(p.foto); $('d-img').alt = p.ad; }
+    $('d-kat').textContent = p.kategori; $('d-ad').textContent = p.ad;
+    $('d-fiyat').textContent = p.durum === 'yok' ? K.yok : fiyat(p);
+    $('d-acik').textContent = p.aciklama || ''; $('d-tags').innerHTML = tags(p);
+    $('d-o1').textContent = p.o1 || '—'; $('d-o2').textContent = p.o2 || '—';
+    $('d-wa').textContent = K.detayCta[0];
+    $('d-wa').onclick = function(ev){ ev.preventDefault(); toast('Gerçek sitede WhatsApp "' + K.wa.replace('{ad}', p.ad) + '" mesajıyla açılır.'); };
+    $('dlg').showModal();
+  }
+  document.addEventListener('click', function(e){ var c = e.target.closest('.item,.pick'); if (c) open(c.dataset.id); });
+  $('dlg-close').addEventListener('click', function(){ $('dlg').close(); });
+  $('dlg').addEventListener('click', function(e){ if (e.target === $('dlg')) $('dlg').close(); });
+  render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Randevu paneli · Cankat Diş Kliniği</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="r.css">
+</head>
+<body>
+<div class="demo-bar">Örnek panel · Gerçek panel şifreyle korunur · <a href="randevu.html">Yeni randevu oluştur</a></div>
+<div class="rv-sek" id="rv-sek"></div>
+<header class="site-head">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <svg class="mark" viewBox="14 16 72 68" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="8"><path d="M20 22H80"/><path d="M50 22V78"/><path d="M20 78H80"/><path d="M30 34V44a20 16 0 0 0 40 0V34"/></g></svg>
+      <span><b>Randevu paneli</b><small data-rv="ad">Cankat Diş Kliniği</small></span>
+    </a>
+    <a class="btn btn-ghost" href="index.html" style="padding:11px 16px">Siteyi gör</a>
+  </div>
+</header>
+<main class="container pnl">
+  <div class="pnl-top">
+    <div><h1 style="font-size:clamp(28px,5vw,42px)">Randevular</h1><p style="color:var(--muted);margin-top:4px">Gelen talepleri onaylayın ya da iptal edin. Onayladığınızda müşteriye otomatik mesaj gider.</p></div>
+    <a class="btn btn-primary" href="randevu.html">Randevu ekle</a>
+  </div>
+  <div class="kpis"><div><b id="k1">0</b><span>Onay bekleyen</span></div><div><b id="k2">0</b><span>Bugün</span></div><div><b id="k3">0</b><span>Bu hafta</span></div></div>
+  <div class="tbl"><table><thead><tr><th>Tarih</th><th>Saat</th><th data-rv="kisiTerim">Hasta</th><th data-rv="hizmetTerim">Tedavi</th><th>Durum</th><th></th></tr></thead><tbody id="rows"></tbody></table></div>
+  <p id="empty" style="color:var(--muted);margin-top:16px" hidden>Henüz randevu yok. <a href="randevu.html">Örnek bir randevu oluşturun</a>, burada görünecek.</p>
+</main>
+<script src="../assets/site.js"></script>
+<script src="data.js"></script>
+<script>
+rvUygula();
+[].forEach.call(document.querySelectorAll('a[href="index.html"], a[href="randevu.html"]'), function(a){ a.href += '?s=' + RV_KEY; });
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var esc = function(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+  var ST = { bekliyor: ['wait','Onay bekliyor'], onay: ['ok','Onaylandı'], iptal: ['no','İptal'] };
+  var iso = function(d){ return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0'); };
+  function draw(){
+    var list = randevuYukle().sort(function(a,b){ return (a.tarih + a.saat).localeCompare(b.tarih + b.saat); });
+    var today = iso(new Date()), wk = new Date(); wk.setDate(wk.getDate() + 7); var wkIso = iso(wk);
+    $('k1').textContent = list.filter(function(r){ return r.durum === 'bekliyor'; }).length;
+    $('k2').textContent = list.filter(function(r){ return r.tarih === today && r.durum !== 'iptal'; }).length;
+    $('k3').textContent = list.filter(function(r){ return r.tarih >= today && r.tarih <= wkIso && r.durum !== 'iptal'; }).length;
+    $('empty').hidden = list.length > 0;
+    $('rows').innerHTML = list.map(function(r){
+      var h = HIZMETLER.filter(function(x){ return x.id === r.hizmet; })[0], st = ST[r.durum] || ST.bekliyor;
+      var d = new Date(r.tarih + 'T00:00');
+      return '<tr><td>' + d.toLocaleDateString('tr-TR', { day: 'numeric', month: 'short', weekday: 'short' }) + '</td><td>' + esc(r.saat) + '</td><td><b>' + esc(r.ad) + '</b><br><span style="color:var(--muted);font-size:14px">' + esc(r.tel) + '</span></td><td>' + esc(h ? h.ad : r.hizmet) + '</td><td><span class="st ' + st[0] + '">' + st[1] + '</span></td><td style="white-space:nowrap">' +
+        (r.durum === 'bekliyor' ? '<button class="lnk" data-a="onay" data-id="' + r.id + '">Onayla</button>' : '') +
+        (r.durum !== 'iptal' ? '<button class="lnk" data-a="iptal" data-id="' + r.id + '">İptal</button>' : '') + '</td></tr>';
+    }).join('');
+  }
+  $('rows').addEventListener('click', function(e){
+    var b = e.target.closest('[data-a]'); if (!b) return;
+    var list = randevuYukle(), r0 = null; list.forEach(function(r){ if (r.id === b.dataset.id) { r.durum = b.dataset.a; r0 = r; } });
+    randevuKaydet(list); draw();
+    if (!r0) return;
+    var g = new Date(r0.tarih + 'T00:00').toLocaleDateString('tr-TR', { day: 'numeric', month: 'long' });
+    var sms = b.dataset.a === 'onay'
+      ? RV.ad + ': ' + g + ' ' + r0.saat + ' randevunuz onaylandı. Değişiklik için bu mesajı yanıtlayın ya da arayın.'
+      : RV.ad + ': ' + g + ' ' + r0.saat + ' randevunuz iptal edildi. Yeni saat için bizi arayın.';
+    toast('Müşteriye mesaj gitti (örnek): "' + sms + '"');
+  });
+  draw();
+})();
+</script>
+</body>
+</html>

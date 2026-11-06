@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Online randevu · Cankat Diş Kliniği</title>
+<meta name="robots" content="noindex">
+<link rel="icon" href="../assets/logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../assets/base.css">
+<link rel="stylesheet" href="r.css">
+</head>
+<body>
+<div class="demo-bar">Örnek şablon · Randevular sadece bu tarayıcıda saklanır · <a href="panel.html">Panelde gör</a></div>
+<div class="rv-sek" id="rv-sek"></div>
+<header class="site-head">
+  <div class="container">
+    <a class="brand" href="index.html">
+      <svg class="mark" viewBox="14 16 72 68" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="8"><path d="M20 22H80"/><path d="M50 22V78"/><path d="M20 78H80"/><path d="M30 34V44a20 16 0 0 0 40 0V34"/></g></svg>
+      <span><b data-rv="ad">Cankat Diş Kliniği</b><small>Online randevu</small></span>
+    </a>
+    <a class="btn btn-ghost" href="index.html" style="padding:11px 16px">Siteye dön</a>
+  </div>
+</header>
+
+<main class="container">
+  <div class="book">
+    <div class="steps" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
+    <section class="step" data-s="1">
+      <h2 id="t-sec"></h2><p data-rv="ipucu"></p>
+      <div class="opts" id="hizmet"></div>
+    </section>
+
+    <section class="step" data-s="2" hidden>
+      <h2>Gün ve saat</h2><p id="gun-not">Üstü çizili saatler dolu.</p>
+      <div class="days" id="days"></div>
+      <div class="slots" id="slots"></div>
+    </section>
+
+    <section class="step" data-s="3" hidden>
+      <h2>Bilgileriniz</h2><p>Randevu onayı bu numaraya mesajla gönderilir.</p>
+      <div class="fields">
+        <label for="ad">Ad soyad<input id="ad" autocomplete="name"></label>
+        <label for="tel">Telefon<input id="tel" type="tel" autocomplete="tel" placeholder="05xx xxx xx xx"></label>
+        <label for="not">Not (isteğe bağlı)<textarea id="not" rows="3" placeholder="Örn. sabah saatleri uygun"></textarea></label>
+        <p class="consent" style="display:block;font-size:14px;color:var(--muted)">Bilgileriniz yalnızca randevunuz için kullanılır. Ayrıntılar <a href="#">KVKK aydınlatma metninde</a>.</p>
+      </div>
+    </section>
+
+    <section class="step" data-s="4" hidden>
+      <h2>Kontrol edin</h2><p>Bilgiler doğruysa randevuyu onaylayın.</p>
+      <dl class="summary" id="sum"></dl>
+    </section>
+
+    <section class="step done" data-s="5" hidden>
+      <div class="tick"></div>
+      <h2>Randevu talebiniz alındı</h2>
+      <p style="color:var(--muted);margin-top:10px" id="done-text"></p>
+      <div class="actions" style="justify-content:center"><a class="btn btn-primary" href="index.html">Ana sayfa</a><a class="btn btn-ghost" href="panel.html" id="pnl-link">Yönetim paneli (örnek)</a></div>
+    </section>
+
+    <div class="nav-btns" id="navb">
+      <button class="btn btn-ghost" id="back" type="button">Geri</button>
+      <button class="btn btn-primary" id="next" type="button">Devam</button>
+    </div>
+  </div>
+</main>
+
+<script src="../assets/site.js"></script>
+<script src="data.js"></script>
+<script>
+(function(){
+  var $ = function(id){ return document.getElementById(id); };
+  var esc = function(s){ return String(s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); };
+  var GUN = ['Paz','Pzt','Sal','Çar','Per','Cum','Cmt'], AY = ['Oca','Şub','Mar','Nis','May','Haz','Tem','Ağu','Eyl','Eki','Kas','Ara'];
+  var s = 1, sel = { h: new URLSearchParams(location.search).get('h'), tarih: null, saat: null };
+  var iso = function(d){ return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0'); };
+  var nice = function(t){ var d = new Date(t + 'T00:00'); return d.getDate() + ' ' + AY[d.getMonth()] + ' ' + ['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'][d.getDay()]; };
+
+  rvUygula();
+  $('t-sec').textContent = RV.hizmetTerim + ' seçin';
+  $('gun-not').textContent = (RV.pazar ? '' : 'Pazar günleri kapalıyız. ') + 'Üstü çizili saatler dolu.';
+  [].forEach.call(document.querySelectorAll('a[href="index.html"], a[href="panel.html"]'), function(a){ a.href += '?s=' + RV_KEY; });
+  $('hizmet').innerHTML = HIZMETLER.map(function(h){ return '<button class="opt" data-h="' + h.id + '" aria-pressed="' + (sel.h === h.id) + '"><b>' + esc(h.ad) + '</b><span>' + h.sure + ' dk · ' + esc(h.not) + '</span></button>'; }).join('');
+  $('hizmet').addEventListener('click', function(e){ var b = e.target.closest('.opt'); if(!b) return; sel.h = b.dataset.h; [].forEach.call(this.children, function(c){ c.setAttribute('aria-pressed', c === b); }); });
+
+  var days = [], t = new Date(); t.setHours(0,0,0,0);
+  for (var i = 0; i < 14; i++) { var d = new Date(t); d.setDate(t.getDate() + i); days.push(d); }
+  $('days').innerHTML = days.map(function(d){ var closed = d.getDay() === 0 && !RV.pazar; return '<button class="day" data-t="' + iso(d) + '"' + (closed ? ' disabled' : '') + ' aria-pressed="false"><small>' + GUN[d.getDay()] + '</small><b>' + d.getDate() + '</b><small>' + AY[d.getMonth()] + '</small></button>'; }).join('');
+  function slots(){
+    if (!sel.tarih) { $('slots').innerHTML = '<p style="color:var(--muted);grid-column:1/-1">Önce bir gün seçin.</p>'; return; }
+    var dt = new Date(sel.tarih + 'T00:00'), sat = dt.getDay() === 6, now = new Date(), son = dt.getDay() === 0 ? '17:00' : sat ? RV.cumartesi : '99:99';
+    $('slots').innerHTML = SAATLER.filter(function(h){ return h < son; }).map(function(h){
+      var past = sel.tarih === iso(now) && h <= String(now.getHours()).padStart(2,'0') + ':' + String(now.getMinutes()).padStart(2,'0');
+      var full = past || doluMu(sel.tarih, h);
+      return '<button class="slot" data-saat="' + h + '"' + (full ? ' disabled aria-label="' + h + ' dolu"' : '') + ' aria-pressed="' + (sel.saat === h) + '">' + h + '</button>';
+    }).join('');
+  }
+  $('days').addEventListener('click', function(e){ var b = e.target.closest('.day'); if(!b || b.disabled) return; sel.tarih = b.dataset.t; sel.saat = null; [].forEach.call(this.children, function(c){ c.setAttribute('aria-pressed', c === b); }); slots(); });
+  $('slots').addEventListener('click', function(e){ var b = e.target.closest('.slot'); if(!b || b.disabled) return; sel.saat = b.dataset.saat; [].forEach.call(this.children, function(c){ if (c.setAttribute) c.setAttribute('aria-pressed', c === b); }); });
+  slots();
+
+  function show(){
+    document.querySelectorAll('.step').forEach(function(x){ x.hidden = +x.dataset.s !== s; });
+    document.querySelectorAll('.steps span').forEach(function(x, i){ x.classList.toggle('on', i < s); });
+    $('back').style.visibility = s > 1 && s < 5 ? 'visible' : 'hidden';
+    $('navb').hidden = s === 5;
+    $('next').textContent = s === 4 ? 'Randevuyu onayla' : 'Devam';
+    if (s === 4) {
+      var h = HIZMETLER.filter(function(x){ return x.id === sel.h; })[0];
+      $('sum').innerHTML = '<dt>' + RV.hizmetTerim + '</dt><dd>' + esc(h.ad) + '</dd><dt>Tarih</dt><dd>' + nice(sel.tarih) + '</dd><dt>Saat</dt><dd>' + sel.saat + '</dd><dt>Ad soyad</dt><dd>' + esc($('ad').value) + '</dd><dt>Telefon</dt><dd>' + esc($('tel').value) + '</dd>';
+    }
+    window.scrollTo({ top: 0 });
+  }
+  $('next').addEventListener('click', function(){
+    if (s === 1 && !sel.h) return toast('Bir ' + RV.hizmetTerim.toLocaleLowerCase('tr') + ' seçin.');
+    if (s === 2 && (!sel.tarih || !sel.saat)) return toast('Gün ve saat seçin.');
+    if (s === 3) {
+      if (!$('ad').value.trim() || $('tel').value.replace(/\D/g,'').length < 10) return toast('Ad soyad ve geçerli bir telefon girin.');
+    }
+    if (s === 4) {
+      var list = randevuYukle();
+      list.push({ id: 'r' + Date.now(), hizmet: sel.h, tarih: sel.tarih, saat: sel.saat, ad: $('ad').value.trim(), tel: $('tel').value.trim(), not: $('not').value.trim(), durum: 'bekliyor', olusturma: new Date().toISOString() });
+      randevuKaydet(list);
+      $('done-text').textContent = nice(sel.tarih) + ', saat ' + sel.saat + '. Gerçek sitede ' + RV.kisa.toLocaleLowerCase('tr') + ' onaylayınca size mesaj gelir.';
+    }
+    s++; show();
+  });
+  $('back').addEventListener('click', function(){ if (s > 1) { s--; show(); } });
+  if (sel.h && HIZMETLER.some(function(x){ return x.id === sel.h; })) s = 2;
+  show();
+})();
+</script>
+</body>
+</html>
