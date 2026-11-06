@@ -4,11 +4,11 @@
   --accent:#e2733b; --accent-dark:#c95f2a; --on-accent:#1a0f08;
   --soft:#1e1814; --card:#211a15; --ph-bg:#2a211b; --ph-line:#3a2e26;
   --radius:6px; --radius-sm:4px;
-  --f-display:"Fraunces",Georgia,serif;
-  --f-body:"Figtree",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-display:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --f-body:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
   color-scheme:dark;
 }
-h1,h2,h3{font-weight:600;letter-spacing:-.01em;font-variation-settings:"SOFT" 50,"WONK" 0}
+h1,h2,h3{font-weight:700;letter-spacing:-.02em}
 .site-head{background:rgba(21,17,14,.92);backdrop-filter:blur(10px)}
 .brand .mark{color:var(--accent)}
 
@@ -18,7 +18,7 @@ h1,h2,h3{font-weight:600;letter-spacing:-.01em;font-variation-settings:"SOFT" 50
 .r-hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(180deg,rgba(21,17,14,.15) 0%,rgba(21,17,14,.35) 45%,rgba(21,17,14,.96) 100%)}
 .r-hero .container{padding-block:clamp(48px,10vw,96px) clamp(32px,6vw,56px)}
 .r-hero h1{font-size:clamp(46px,9vw,104px);line-height:.95;margin:14px 0 18px;max-width:11ch}
-.r-hero h1 em{font-style:italic;color:var(--accent)}
+.r-hero h1 em{font-style:normal;color:var(--accent)}
 .r-hero .lead{color:#e6dccd}
 .facts{display:flex;flex-wrap:wrap;gap:8px 22px;margin:22px 0 26px;font-size:15px;color:#e6dccd}
 .facts span{display:inline-flex;align-items:center;gap:8px}
@@ -137,7 +137,7 @@ td .pin{width:92px;font:inherit;padding:7px 9px;border:1px solid var(--line);bor
 .sw.off{border-color:#e7c9bb;background:#fbece5;color:#9a4417}
 td .lnk{background:none;border:0;color:var(--accent);font:600 14px/1 var(--f-body);cursor:pointer;padding:4px 6px}
 .pform{display:grid;gap:12px;background:#fff;border:1px solid var(--line);padding:20px;border-radius:6px;position:sticky;top:90px}
-.pform h2{font:600 22px/1.2 var(--f-display)}
+.pform h2{font:700 22px/1.2 var(--f-display)}
 .pform label{display:grid;gap:5px;font-weight:600;font-size:14px}
 .pform input,.pform select,.pform textarea{font:inherit;font-weight:400;border:1px solid var(--line);border-radius:4px;padding:9px 11px;background:#fff;color:var(--ink);width:100%}
 .pform textarea{min-height:76px}

@@ -18,11 +18,11 @@
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/logo.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,500;0,6..96,700;1,6..96,500&family=Hanken+Grotesk:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap">
 <style>
 :root{
   --paper:#efebe3; --paper-2:#e6e0d4; --ink:#141210; --muted:#6a6358; --line:#d3cbbd;
-  --f-d:"Bodoni Moda",Didot,Georgia,serif; --f-b:"Hanken Grotesk",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-d:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif; --f-b:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
   --wa:#1f8f4e;
 }
 *,*::before,*::after{box-sizing:border-box}
@@ -31,7 +31,7 @@ html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
 body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.55 var(--f-b);-webkit-font-smoothing:antialiased}
 img{max-width:100%;display:block}
 a{color:inherit}
-h1,h2,h3{margin:0;font-weight:500;line-height:1.02;text-wrap:balance}
+h1,h2,h3{margin:0;font-weight:700;line-height:1.02;text-wrap:balance}
 p{margin:0}
 :focus-visible{outline:2px solid currentColor;outline-offset:3px}
 .wrap{max-width:1240px;margin:0 auto;padding-inline:max(20px,env(safe-area-inset-left,0px))}
@@ -47,24 +47,24 @@ p{margin:0}
 .intro{display:grid;grid-template-columns:1.1fr 1fr;gap:clamp(32px,5vw,80px);padding-block:clamp(40px,7vw,96px) clamp(40px,6vw,72px);align-items:center}
 @media (max-width:860px){.intro{grid-template-columns:1fr}}
 .kicker{font:600 12.5px/1 var(--f-b);letter-spacing:.14em;text-transform:uppercase}
-.intro h1{font-family:var(--f-d);font-size:clamp(52px,7.6vw,112px);letter-spacing:-.035em;margin:18px 0 24px;max-width:9ch}
-.intro h1 i{font-weight:500}
+.intro h1{font-family:var(--f-d);font-size:clamp(52px,7.6vw,112px);letter-spacing:-.03em;margin:18px 0 24px;max-width:9ch}
+.intro h1 i{font-style:normal;color:var(--muted)}
 .intro p{font-size:clamp(16.5px,1.4vw,19px);color:var(--muted);max-width:46ch}
 .toc{border-top:1px solid var(--ink)}
 .toc a{display:grid;grid-template-columns:64px 1fr auto;gap:16px;align-items:center;padding:14px 0;border-bottom:1px solid var(--line);text-decoration:none;transition:padding .25s ease,background .25s}
 .toc a:hover{padding-inline:10px;background:rgba(255,255,255,.45)}
 .toc img{width:64px;height:48px;object-fit:cover}
-.toc b{display:block;font-family:var(--f-d);font-size:25px;font-weight:500;line-height:1.05;border-left:3px solid var(--c);padding-left:10px}
+.toc b{display:block;font-family:var(--f-d);font-size:23px;font-weight:700;line-height:1.05;border-left:3px solid var(--c);padding-left:10px}
 .toc small{display:block;font-size:14px;color:var(--muted);margin-top:4px;padding-left:13px}
 .toc em{font-style:normal;font-weight:600;font-variant-numeric:tabular-nums;white-space:nowrap}
-.toc .own b{border-left:0;padding-left:0;font-style:italic}
+.toc .own b{border-left:0;padding-left:0}
 .toc .own small{padding-left:0}
 .toc .plus{width:64px;height:48px;display:grid;place-items:center;border:1px dashed var(--ink);font:400 26px/1 var(--f-d)}
 .toc .vat{font-size:13px;margin-top:10px}
 
 /* Seçici */
 .pick{border-block:1px solid var(--ink);padding-block:20px;display:flex;flex-wrap:wrap;gap:10px 14px;align-items:center}
-.pick .q{font-family:var(--f-d);font-style:italic;font-size:22px;margin-right:6px}
+.pick .q{font-family:var(--f-d);font-weight:700;font-size:22px;margin-right:6px}
 .chip{font:500 15px/1 var(--f-b);padding:11px 16px;border:1px solid var(--ink);background:transparent;color:var(--ink);border-radius:999px;cursor:pointer;transition:background .2s,color .2s}
 .chip:hover,.chip[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
 
@@ -116,7 +116,7 @@ p{margin:0}
 @media (max-width:960px){.stage{min-height:0;padding-top:8px}}
 .phone{position:relative;z-index:2;width:clamp(230px,24vw,290px);aspect-ratio:390/800;border-radius:38px;background:#0d0d0d;padding:10px;box-shadow:0 40px 80px -30px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.06) inset;flex:none}
 .phone .scr{position:relative;width:100%;height:100%;border-radius:29px;overflow:hidden;background:#fff}
-.frame iframe{position:absolute;top:0;left:0;border:0;transform-origin:0 0;pointer-events:none;background:#fff}
+.frame .scr img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:top;display:block}
 .phone iframe{width:390px;height:800px}
 .open{position:absolute;inset:0;z-index:4;display:flex;align-items:flex-end;justify-content:center;padding:18px;text-decoration:none;opacity:0;transition:opacity .2s;background:linear-gradient(180deg,transparent 55%,rgba(0,0,0,.55))}
 .open span{font:600 14px/1 var(--f-b);background:#fff;color:#111;padding:11px 14px;border-radius:999px}
@@ -202,6 +202,11 @@ p{margin:0}
 .end .who b{display:block;font-size:20px;font-weight:600}
 .end .who span{color:#b9b2a6}
 .end .mark{width:44px;height:44px}
+i,em{font-style:normal}
+.end h2 i{color:#d9b98a}
+/* Okunabilirlik: Jakarta için başlık boyları biraz küçültüldü */
+.intro h1{font-size:clamp(44px,6.6vw,96px)}
+.pkg h2{font-size:clamp(48px,7vw,96px)}
 </style>
 </head>
 <body>
@@ -254,7 +259,7 @@ p{margin:0}
           <div class="msg out">Cumartesi artık 10:00'da açıyoruz, siteye işler misiniz?<time>10:12</time></div>
           <div class="msg in">Güncellendi ✓ Sitede yeni saat görünüyor.<time>10:31</time></div>
         </div>
-        <div class="phone frame"><div class="scr"><iframe data-src="vitrin/index.html?s=terzi" title="Vitrin örneği" loading="lazy" tabindex="-1"></iframe></div><a class="open" href="vitrin/index.html?s=terzi"><span>Tam ekran aç</span></a></div>
+        <div class="phone frame"><div class="scr"><img src="assets/onizleme/v-terzi.jpg" alt="Vitrin örneği" loading="lazy" decoding="async"></div><a class="open" href="vitrin/index.html?s=terzi"><span>Tam ekran aç</span></a></div>
       </div>
     </div>
   </section>
@@ -279,7 +284,7 @@ p{margin:0}
           <div class="msg out">Ekibe Zeynep Hanım katıldı, fotoğrafını gönderiyorum.<time>14:05</time></div>
           <div class="msg in">Eklendi ✓ Hakkımızda sayfasında görünüyor.<time>15:20</time></div>
         </div>
-        <div class="phone frame"><div class="scr"><iframe data-src="kurumsal/index.html?s=musavir" title="Kurumsal örneği" loading="lazy" tabindex="-1"></iframe></div><a class="open" href="kurumsal/index.html?s=musavir"><span>Tam ekran aç</span></a></div>
+        <div class="phone frame"><div class="scr"><img src="assets/onizleme/k-musavir.jpg" alt="Kurumsal örneği" loading="lazy" decoding="async"></div><a class="open" href="kurumsal/index.html?s=musavir"><span>Tam ekran aç</span></a></div>
       </div>
     </div>
   </section>
@@ -299,8 +304,8 @@ p{margin:0}
         <div class="acts"><a class="btn btn-fill" href="katalog/index.html?s=restoran">Örneği aç <span class="ar">→</span></a><a class="btn btn-line" href="katalog/panel.html?s=restoran">Yönetim panelini dene <span class="ar">→</span></a></div>
       </div>
       <div class="stage has-desk">
-        <div class="desk frame"><span class="tag-lbl">Yönetim paneli</span><div class="bar"><i></i><i></i><i></i><span>Menü paneli</span></div><div class="scr"><iframe data-src="katalog/panel.html?s=restoran" title="Katalog yönetim paneli" loading="lazy" tabindex="-1"></iframe></div><a class="open" href="katalog/panel.html?s=restoran"><span>Paneli dene</span></a></div>
-        <div class="phone frame"><div class="scr"><iframe data-src="katalog/index.html?s=restoran" title="Katalog örneği" loading="lazy" tabindex="-1"></iframe></div><a class="open" href="katalog/index.html?s=restoran"><span>Tam ekran aç</span></a></div>
+        <div class="desk frame"><span class="tag-lbl">Yönetim paneli</span><div class="bar"><i></i><i></i><i></i><span>Menü paneli</span></div><div class="scr"><img src="assets/onizleme/m-katalog-panel.jpg" alt="Katalog yönetim paneli" loading="lazy" decoding="async"></div><a class="open" href="katalog/panel.html?s=restoran"><span>Paneli dene</span></a></div>
+        <div class="phone frame"><div class="scr"><img src="assets/onizleme/c-restoran.jpg" alt="Katalog örneği" loading="lazy" decoding="async"></div><a class="open" href="katalog/index.html?s=restoran"><span>Tam ekran aç</span></a></div>
       </div>
     </div>
   </section>
@@ -320,8 +325,8 @@ p{margin:0}
         <div class="acts"><a class="btn btn-fill" href="randevulu/index.html?s=dis">Örneği aç <span class="ar">→</span></a><a class="btn btn-line" href="randevulu/panel.html?s=dis">Yönetim panelini dene <span class="ar">→</span></a></div>
       </div>
       <div class="stage has-desk">
-        <div class="desk frame"><span class="tag-lbl">Yönetim paneli</span><div class="bar"><i></i><i></i><i></i><span>Randevu paneli</span></div><div class="scr"><iframe data-src="randevulu/panel.html?s=dis" title="Randevu paneli" loading="lazy" tabindex="-1"></iframe></div><a class="open" href="randevulu/panel.html?s=dis"><span>Paneli dene</span></a></div>
-        <div class="phone frame"><div class="scr"><iframe data-src="randevulu/index.html?s=dis" title="Randevulu örneği" loading="lazy" tabindex="-1"></iframe></div><a class="open" href="randevulu/index.html?s=dis"><span>Tam ekran aç</span></a></div>
+        <div class="desk frame"><span class="tag-lbl">Yönetim paneli</span><div class="bar"><i></i><i></i><i></i><span>Randevu paneli</span></div><div class="scr"><img src="assets/onizleme/m-randevu-panel.jpg" alt="Randevu paneli" loading="lazy" decoding="async"></div><a class="open" href="randevulu/panel.html?s=dis"><span>Paneli dene</span></a></div>
+        <div class="phone frame"><div class="scr"><img src="assets/onizleme/r-dis.jpg" alt="Randevulu örneği" loading="lazy" decoding="async"></div><a class="open" href="randevulu/index.html?s=dis"><span>Tam ekran aç</span></a></div>
       </div>
     </div>
   </section>

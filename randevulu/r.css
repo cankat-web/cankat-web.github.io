@@ -4,8 +4,8 @@
   --accent:#0d6e6e; --accent-dark:#0a5555; --on-accent:#fff;
   --soft:#f1f7f7; --ph-bg:#e8f1f1; --ph-line:#d2e1e1;
   --radius:16px; --radius-sm:10px;
-  --f-display:"Plus Jakarta Sans",system-ui,sans-serif;
-  --f-body:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-display:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  --f-body:"Plus Jakarta Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
 }
 h1,h2,h3{font-weight:700;letter-spacing:-.02em}
 .hero{padding-block:clamp(36px,7vw,80px)}
